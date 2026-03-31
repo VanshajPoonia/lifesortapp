@@ -17,7 +17,8 @@ export async function POST(request: Request) {
       SET 
         is_subscribed = ${isSubscribed},
         subscription_ends_at = ${subscriptionEndsAt || null},
-        subscription_end_date = ${subscriptionEndsAt || null}
+        subscription_end_date = ${subscriptionEndsAt || null},
+        subscription_source = CASE WHEN ${isSubscribed} = true THEN 'manual' ELSE subscription_source END
       WHERE id = ${userId}
       RETURNING id, email, name, is_subscribed, subscription_ends_at, trial_ends_at
     `

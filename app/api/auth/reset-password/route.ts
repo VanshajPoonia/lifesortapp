@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
-import bcrypt from "bcryptjs"
+
+import { hashPassword } from "@/lib/auth"
 
 const sql = neon(process.env.DATABASE_URL!)
 
@@ -39,8 +40,8 @@ export async function POST(request: Request) {
 
     const resetToken = tokens[0]
 
-    // Hash the new password
-    const passwordHash = await bcrypt.hash(password, 12)
+    // Keep password hashing aligned with the login/auth helpers.
+    const passwordHash = await hashPassword(password)
 
     // Update the user's password
     await sql`

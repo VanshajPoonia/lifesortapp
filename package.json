@@ -6,7 +6,9 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "eslint .",
-    "start": "next start"
+    "start": "next start",
+    "mobile:start": "pnpm --dir mobile start",
+    "mobile:ios": "pnpm --dir mobile ios"
   },
   "dependencies": {
     "@ai-sdk/react": "3.0.51",
