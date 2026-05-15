@@ -36,6 +36,7 @@ import { Badge } from "@/components/ui/badge"
 import { ThemeSwitcher } from "@/components/theme-switcher"
 import { DailyPopup } from "@/components/daily-popup"
 import { OnboardingModal } from "@/components/onboarding-modal"
+import { MobileBottomNav } from "@/components/mobile-bottom-nav"
 
 const DEFAULT_SIDEBAR_PREFS = {
   dashboard: true,
@@ -326,7 +327,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background">
+    <div className="flex min-h-dvh overflow-hidden bg-background">
       {/* Onboarding Modal */}
       <OnboardingModal
         isOpen={showOnboarding}
@@ -358,7 +359,7 @@ export default function Home() {
       <aside
         className={`${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } fixed inset-y-0 left-0 z-50 w-64 md:relative md:translate-x-0 border-r border-border bg-card transition-transform duration-300`}
+        } fixed inset-y-0 left-0 z-50 w-64 md:relative md:translate-x-0 border-r border-border bg-card pt-[env(safe-area-inset-top)] transition-transform duration-300 md:pt-0`}
       >
         <div className="flex h-full flex-col">
           {/* Logo */}
@@ -539,9 +540,9 @@ export default function Home() {
       </aside>
 
       {/* Main Content */}
-      <div className="flex flex-1 flex-col overflow-hidden">
+      <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
         {/* Header */}
-        <header className="flex h-16 items-center justify-between border-b border-border bg-card px-6">
+        <header className="flex items-center justify-between border-b border-border bg-card px-4 pb-4 pt-[calc(env(safe-area-inset-top)+1rem)] md:h-16 md:px-6 md:py-0">
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(!sidebarOpen)} className="md:hidden">
               <Menu className="h-5 w-5" />
@@ -577,7 +578,7 @@ export default function Home() {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-auto p-4 md:p-6">
+        <main className="flex-1 overflow-auto p-4 pb-[calc(env(safe-area-inset-bottom)+5.5rem)] md:p-6">
           <div className="mx-auto max-w-7xl space-y-4 md:space-y-6">
         {/* Welcome Section */}
           <div className="rounded-lg bg-gradient-to-r from-primary/20 to-accent/20 p-6">
@@ -696,6 +697,7 @@ export default function Home() {
           </div>
         </main>
       </div>
+      <MobileBottomNav />
     </div>
   )
 }

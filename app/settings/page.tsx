@@ -289,28 +289,30 @@ export default function SettingsPage() {
       subtitle="Manage your profile and preferences"
     >
       <Tabs defaultValue="profile" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-5 lg:w-[620px]">
-          <TabsTrigger value="profile">
-            <User className="h-4 w-4 mr-2" />
-            Profile
-          </TabsTrigger>
-          <TabsTrigger value="sidebar">
-            <LayoutDashboard className="h-4 w-4 mr-2" />
-            Sidebar
-          </TabsTrigger>
-          <TabsTrigger value="content">
-            <Sparkles className="h-4 w-4 mr-2" />
-            Content
-          </TabsTrigger>
-          <TabsTrigger value="faqs">
-            <HelpCircle className="h-4 w-4 mr-2" />
-            FAQs
-          </TabsTrigger>
-          <TabsTrigger value="account">
-            <Shield className="h-4 w-4 mr-2" />
-            Account
-          </TabsTrigger>
-        </TabsList>
+        <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+          <TabsList className="grid min-w-[620px] grid-cols-5 sm:w-full lg:w-[620px]">
+            <TabsTrigger value="profile">
+              <User className="h-4 w-4 mr-2" />
+              Profile
+            </TabsTrigger>
+            <TabsTrigger value="sidebar">
+              <LayoutDashboard className="h-4 w-4 mr-2" />
+              Sidebar
+            </TabsTrigger>
+            <TabsTrigger value="content">
+              <Sparkles className="h-4 w-4 mr-2" />
+              Content
+            </TabsTrigger>
+            <TabsTrigger value="faqs">
+              <HelpCircle className="h-4 w-4 mr-2" />
+              FAQs
+            </TabsTrigger>
+            <TabsTrigger value="account">
+              <Shield className="h-4 w-4 mr-2" />
+              Account
+            </TabsTrigger>
+          </TabsList>
+        </div>
 
         {/* Profile Tab */}
         <TabsContent value="profile" className="space-y-6">

@@ -4,7 +4,12 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "cap": "cap",
+    "cap:sync:ios": "cap sync ios",
     "dev": "next dev",
+    "ios:add": "cap add ios",
+    "ios:open": "cap open ios",
+    "ios:sync": "cap sync ios",
     "lint": "eslint .",
     "start": "next start",
     "mobile:start": "pnpm --dir mobile start",
@@ -12,6 +17,11 @@
   },
   "dependencies": {
     "@ai-sdk/react": "3.0.51",
+    "@capacitor/app": "^8.1.0",
+    "@capacitor/core": "^8.3.4",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/ios": "^8.3.4",
+    "@capacitor/splash-screen": "^8.0.1",
     "@hookform/resolvers": "^3.10.0",
     "@neondatabase/serverless": "1.0.2",
     "@radix-ui/react-accordion": "1.2.2",
@@ -73,9 +83,12 @@
     "zod": "3.25.76"
   },
   "devDependencies": {
+    "@capacitor/cli": "^8.3.4",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^15.5.9",
     "postcss": "^8.5",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"

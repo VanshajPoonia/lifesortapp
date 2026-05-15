@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { AuthProvider } from "@/components/auth-provider"
@@ -12,19 +12,21 @@ export const metadata: Metadata = {
   title: "LifeSort - Organize Your Life",
   description: "A comprehensive life management platform for goals, tasks, investments, and personal growth",
   manifest: "/manifest.json",
-  themeColor: "#8b5cf6",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
     title: "LifeSort",
   },
     generator: 'v0.app'
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#8b5cf6",
+  viewportFit: "cover",
 }
 
 export default function RootLayout({

@@ -34,6 +34,7 @@ import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { ThemeSwitcher } from "@/components/theme-switcher"
 import { DailyPopup } from "@/components/daily-popup"
+import { MobileBottomNav } from "@/components/mobile-bottom-nav"
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -142,7 +143,7 @@ export function DashboardLayout({ children, title, subtitle, showGreeting = fals
   }, [user])
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background">
+    <div className="flex min-h-dvh overflow-hidden bg-background">
       {/* Daily Content Popup */}
       <DailyPopup />
       
@@ -158,7 +159,7 @@ export function DashboardLayout({ children, title, subtitle, showGreeting = fals
       <aside
         className={`${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } fixed inset-y-0 left-0 z-50 w-64 md:relative md:translate-x-0 border-r border-border bg-card transition-transform duration-300`}
+        } fixed inset-y-0 left-0 z-50 w-64 md:relative md:translate-x-0 border-r border-border bg-card pt-[env(safe-area-inset-top)] transition-transform duration-300 md:pt-0`}
       >
         <div className="flex h-full flex-col">
           {/* Logo */}
@@ -348,9 +349,9 @@ export function DashboardLayout({ children, title, subtitle, showGreeting = fals
       </aside>
 
       {/* Main Content */}
-      <div className="flex flex-1 flex-col overflow-hidden">
+      <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
       {/* Header */}
-      <header className="flex items-center justify-between border-b border-border bg-card px-4 md:px-6 py-4">
+      <header className="flex items-center justify-between border-b border-border bg-card px-4 pb-4 pt-[calc(env(safe-area-inset-top)+1rem)] md:px-6 md:py-4">
         <div className="flex items-center gap-3">
           <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(!sidebarOpen)} className="md:hidden">
             <Menu className="h-5 w-5 text-foreground" />
@@ -381,12 +382,13 @@ export function DashboardLayout({ children, title, subtitle, showGreeting = fals
       </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-auto p-4 md:p-6">
+        <main className="flex-1 overflow-auto p-4 pb-[calc(env(safe-area-inset-bottom)+5.5rem)] md:p-6">
           <div className="mx-auto max-w-7xl space-y-4 md:space-y-6">
             {children}
           </div>
         </main>
       </div>
+      <MobileBottomNav />
     </div>
   )
 }
