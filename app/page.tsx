@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/components/auth-provider"
@@ -364,14 +365,16 @@ export default function Home() {
         <div className="flex h-full flex-col">
           {/* Logo */}
           <div className="flex h-16 items-center justify-between border-b border-border px-6">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent">
-                <LayoutGrid className="h-6 w-6 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                LifeSort
-              </span>
-            </div>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/lifesort-logo.png"
+                alt="LifeSort"
+                width={160}
+                height={60}
+                priority
+                className="h-12 w-40 rounded-md object-contain"
+              />
+            </Link>
             <Button 
               variant="ghost" 
               size="icon" 
